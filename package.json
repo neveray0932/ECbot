@@ -1,20 +1,20 @@
 {
-  "name": "ECbot",
-  "version": "1.0.0",
-  "main": "indes.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "debug": "node --inspect index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "config": "^3.3.6",
-    "express": "^4.17.1",
-    "request": "^2.88.2"
-  }
+    "name": "ECbot",
+    "version": "1.0.0",
+    "main": "indes.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node indes.js",
+        "debug": "node --inspect indes.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "config": "^3.3.6",
+        "express": "^4.17.1",
+        "request": "^2.88.2"
+    }
 }
