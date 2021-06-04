@@ -53,6 +53,7 @@ app.post('/webhook', function(req, res) {
         if (!error && response.statusCode == 200) {
             console.log("[SheetDB API] Success");
             sendCards(body, res);
+            sendCardsV2(body, res);
         } else {
             console.log("[SheetDB API] failed!")
         }
@@ -76,6 +77,48 @@ function sendCards(body, res) {
         }];
         thisFulfillmentMessages.push(thisObject);
     }
+    var responseObject = {
+        fulfillmentMessages: thisFulfillmentMessages
+    };
+    res.json(responseObject);
+}
+
+function sendCardsV2(body, res) {
+    console.log('[sendCardsV2] In');
+    var thisFulfillmentMessages = [];
+    var thisLineObject = {
+        payload: {
+            line: {
+                type: "template",
+                altText: "this is a carousel template",
+                template: {
+                    type: "carousel",
+                    columns: []
+                }
+            }
+        }
+    };
+
+    for (var x = 0; x < body.length; x++) {
+        var thisObject = {};
+        thisObject.thumbnailImageUrl = body[x].Photo;
+        thisObject.imageBackgroundColor = "#FFFFFF";
+        thisObject.title = body[x].Name;
+        thisObject.text = body[x].Category;
+        thisObject.defaultAction = {};
+        thisObject.defaultAction.type = "uri";
+        thisObject.defaultAction.label = "view detail";
+        thisObject.defaultAction.uri = body[x].Photo;
+        thisObject.actions = [];
+        var thisActionObject = {};
+        thisActionObject.type = "uri";
+        thisActionObject.label = "view detail";
+        thisActionObject.uri = body[x].Photo;
+        thisObject.actions.push(thisActionObject);
+        thisLineObject.payload.line.template.columns.push(thisObject);
+    }
+
+    thisFulfillmentMessages.push(thisLineObject);
     var responseObject = {
         fulfillmentMessages: thisFulfillmentMessages
     };
