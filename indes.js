@@ -52,7 +52,7 @@ app.post('/webhook', function(req, res) {
 
         if (!error && response.statusCode == 200) {
             console.log("[SheetDB API] Success");
-            sendCards(body, res);
+            //sendCards(body, res);
             sendCardsV2(body, res);
         } else {
             console.log("[SheetDB API] failed!")
