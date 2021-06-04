@@ -61,27 +61,27 @@ app.post('/webhook', function(req, res) {
 
 });
 
-function sendCards(body, res) {
-    console.log("[sendCarsoulCards] In");
-    console.log(body);
-    var thisFulfillmentMessages = [];
-    for (var x = 0; x < body.length; x++) {
-        var thisObject = {};
-        thisObject.card = {};
-        thisObject.card.title = body[x].Name;
-        thisObject.card.subtitle = body[x].Category;
-        thisObject.card.imageUri = body[x].Photo;
-        thisObject.card.buttons = [{
-            "text": "看大圖",
-            "postback": body[x].Photo
-        }];
-        thisFulfillmentMessages.push(thisObject);
-    }
-    var responseObject = {
-        fulfillmentMessages: thisFulfillmentMessages
-    };
-    res.json(responseObject);
-}
+// function sendCards(body, res) {
+//     console.log("[sendCarsoulCards] In");
+//     console.log(body);
+//     var thisFulfillmentMessages = [];
+//     for (var x = 0; x < body.length; x++) {
+//         var thisObject = {};
+//         thisObject.card = {};
+//         thisObject.card.title = body[x].Name;
+//         thisObject.card.subtitle = body[x].Category;
+//         thisObject.card.imageUri = body[x].Photo;
+//         thisObject.card.buttons = [{
+//             "text": "看大圖",
+//             "postback": body[x].Photo
+//         }];
+//         thisFulfillmentMessages.push(thisObject);
+//     }
+//     var responseObject = {
+//         fulfillmentMessages: thisFulfillmentMessages
+//     };
+//     res.json(responseObject);
+// }
 
 function sendCardsV2(body, res) {
     console.log('[sendCardsV2] In');
