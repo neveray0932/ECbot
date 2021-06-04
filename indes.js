@@ -1,6 +1,6 @@
 'use strict';
 const
-    bodyParser = require('body-parser'),
+// bodyParser = require('body-parser'),
     config = require('config'),
     express = require('express'),
     request = require('request');
@@ -8,7 +8,9 @@ const
 var app = express();
 var port = process.env.PORT || process.env.port || 5000;
 app.set('port', port);
-app.use(bodyParser.json());
+
+app.use(express.json());
+
 app.use(express.static('public'));
 
 const SHEETDB_PRODUCTINFO_ID = config.get('productinfo_id');
@@ -24,7 +26,7 @@ app.post('/webhook', function(req, res) {
     console.log("[WebHook] In");
     let data = req.body;
     console.log(data)
-    let queryCategory = data.queryResult.parameters.Category;
+    let queryCategory = data.queryResult.parameters["Category"];
 
 
 
